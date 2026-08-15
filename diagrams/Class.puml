@@ -1,0 +1,46 @@
+@startuml
+
+class Car {
+  -autoType: string
+  -x: float
+  -y: float
+  -mass: float
+  -speed: float
+  -friction: float
+  -acceleration: float
+  -width: float
+  -length: float
+  +update()
+  +draw()
+  +drawArrow()
+  +IsClicked()
+  +setVector()
+  +reset()
+  +collideWith()
+}
+
+class Building {
+  -texture: string
+  -x: float
+  -y: float
+  -width: float
+  -length: float
+  +update()
+  +draw()
+  +reset()
+  +collideWith()
+}
+
+class Scene {
+  -Cars: List
+  -Objects: List
+  -weather: string
+  -crossType: string
+  -roadQuality: string
+  +initEnvironment()
+  +update()
+}
+
+Scene "1" o-- Car : "n"
+Scene "1" o-- Building : "n"
+@enduml

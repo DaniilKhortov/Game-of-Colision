@@ -1,0 +1,35 @@
+@startuml
+skinparam componentStyle rectangle
+
+
+artifact "run.py" as run
+
+package "app" {
+    artifact "models.py" as models
+    artifact "gui.py" as gui
+    artifact "scene.py" as scene
+    artifact "settings.config" as settings
+    artifact "_init_.py" as init
+}
+note right of run
+    Executor file
+end note
+
+note right of models
+    Classes file
+end note
+
+note top of scene
+    Physics engine
+end note
+
+
+
+run ..> init :<<uses>>
+init ..> gui :<<uses>>
+
+init ..> settings :<<reads>>
+scene ..> models :<<uses>>
+gui ..> settings :<<writes>>
+gui ..> scene :<<uses>>
+@enduml
